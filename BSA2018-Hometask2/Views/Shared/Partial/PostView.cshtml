@@ -29,7 +29,7 @@
                     <ul class="list-group">
                         @foreach (var item in Model.Comments)
                         {
-                            await Html.RenderPartialAsync("CommentView", item);
+                            await Html.RenderPartialAsync("Partial/CommentView", item);
                         }
                     </ul>
                 </div>

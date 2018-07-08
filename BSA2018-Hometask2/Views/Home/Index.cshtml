@@ -11,9 +11,10 @@
                     <a class="pull-left">
                         <img class="img-circle" src=@item.Avatar>
                     </a>
-
                     <div class="media-body">
-                        <h4 class="media-heading">@item.Name</h4>
+                        <h4 class="media-heading">
+                            @Html.ActionLink(item.Name,"Index","User",item.Id)
+                        </h4>
                     </div>
                 </span>
                 <span>
@@ -23,7 +24,7 @@
 
                     @foreach (var post in item.Posts)
                     {
-                        await Html.RenderPartialAsync("PostView", post);
+                        await Html.RenderPartialAsync("Partial/PostView", post);
                     }
                     <br />
                 </span>
@@ -33,7 +34,7 @@
                     </h3>
 
                     @{
-                        await Html.RenderPartialAsync("TodosView",item.Todos);
+                        await Html.RenderPartialAsync("Partial/TodosView",item.Todos);
                     }
                     <br />
                 </span>

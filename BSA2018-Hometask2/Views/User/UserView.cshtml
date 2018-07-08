@@ -1,7 +1,31 @@
 ﻿@model User
+
 @{
-    ViewData["Title"] = "UserView";
+    ViewData["Href"] = "#collapse" + Model.Id;
+    ViewData["ID"] = "collapse" + Model.Id;
 }
 
-<h2>UserView</h2>
+<a class="center-block">
+    <img class="img-circle" src=@Model.Avatar>
+</a>
+
+<dl class="center-block">
+    <dt class="col-sm-3">Name</dt>
+    <dd class="col-sm-9">@Model.Name</dd>
+
+    <dt class="col-sm-3">Email</dt>
+    <dd class="col-sm-9">@Model.Email</dd>
+
+    <dt class="col-sm-3 text-truncate">Registration date</dt>
+    <dd class="col-sm-9">@Model.CreatedAt</dd>
+
+    <dt class="col-sm-3 text-truncate">Posts</dt>
+    
+
+    <dt class="col-sm-3 text-truncate">Todos</dt>
+    <dd class="col-sm-9">@Model.Todos.Count</dd>
+</dl>
+
+
+
 

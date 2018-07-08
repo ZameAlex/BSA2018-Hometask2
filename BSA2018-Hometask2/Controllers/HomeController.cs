@@ -9,12 +9,11 @@ using BSA2018_Hometask2.Services;
 
 namespace BSA2018_Hometask2.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
-        private readonly SelectionService service;
-        public HomeController(SelectionService _service)
+        public HomeController(SelectionService _service):base(_service)
         {
-            service = _service;
+            
         }
         public IActionResult Index()
         {
