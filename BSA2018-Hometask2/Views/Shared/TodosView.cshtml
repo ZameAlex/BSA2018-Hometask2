@@ -1,0 +1,19 @@
+﻿@model  List<Todo>
+
+<link rel="stylesheet" href="~/css/todo.css" />
+
+
+<ul id="myUL">
+    @foreach (var todo in Model)
+    {
+        @if (todo.IsComplete)
+        {
+            <li  id="ctodo">@todo.Name</li>
+        }
+        else
+        {
+            <li id="todo">@todo.Name</li>
+            }
+     }
+
+</ul>

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BSA2018_Hometask2.Models
 {
-    class Post
+    public class Post
     {
         public int Id { get; set; }
         public DateTime CreatedAt { get; set; }
