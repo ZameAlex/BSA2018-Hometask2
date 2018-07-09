@@ -10,6 +10,7 @@ namespace BSA2018_Hometask2.Controllers
     public class BaseController : Controller
     {
         protected readonly SelectionService service;
+
         public BaseController(SelectionService _service)
         {
             service = _service;

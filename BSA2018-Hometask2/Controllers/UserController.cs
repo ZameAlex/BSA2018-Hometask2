@@ -18,9 +18,8 @@ namespace BSA2018_Hometask2.Controllers
         // GET: User
         public ActionResult Index(int id)
         {
-            return View("UserView",service.GetUsers()[id]);
+            return View("UserView",service.GetUsers().Single(u=>u.Id==id));
         }
-
         
     }
 }

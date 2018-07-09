@@ -9,7 +9,7 @@
         <div class="media">
 
             <div class="media-body">
-                <h4 class="media-heading">@Model.Title</h4>
+                <h4 class="media-heading">@Html.ActionLink(Model.Title, "PostView", "Post",new {name = Model.Title })</h4>
                 <p>
                     @Model.Body
                 </p>

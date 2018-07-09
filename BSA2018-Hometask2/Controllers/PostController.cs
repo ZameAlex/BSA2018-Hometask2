@@ -2,92 +2,32 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BSA2018_Hometask2.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BSA2018_Hometask2.Controllers
 {
-    public class PostController : Controller
+    public class PostController : BaseController
     {
+
+        public PostController(SelectionService _service):base(_service)
+        {
+        }
+
         // GET: Post
-        public ActionResult Index()
+        public ActionResult Index(int id)
         {
-            return View();
+            return View("Index", service.GetUsers().Single(u => u.Id == id).Posts);
         }
 
-        // GET: Post/Details/5
-        public ActionResult Details(int id)
+        public ActionResult PostView(string name)
         {
-            return View();
+            var post = service.GetUsers().SelectMany(u => u.Posts.Where(p => p.Title == name)).FirstOrDefault();
+            ViewBag.Owner = service.GetUsers().Single(u=>u.Id==post.UserId);
+            return View("PostView", post);
         }
 
-        // GET: Post/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Post/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
-        {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Post/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: Post/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Post/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Post/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
+     
     }
 }

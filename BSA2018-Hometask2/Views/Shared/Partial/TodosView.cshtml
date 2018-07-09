@@ -8,12 +8,12 @@
     {
         @if (todo.IsComplete)
         {
-            <li  id="ctodo">@todo.Name</li>
+        <li id="ctodo">@Html.ActionLink(todo.Name, "TodoView", "Todo", new { id = todo.Id })</li>
         }
         else
         {
-            <li id="todo">@todo.Name</li>
-            }
+        <li id="todo">@Html.ActionLink(todo.Name, "TodoView", "Todo", new { id = todo.Id })</li>
+        }
      }
 
 </ul>
