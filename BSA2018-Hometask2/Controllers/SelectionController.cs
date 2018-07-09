@@ -2,92 +2,59 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BSA2018_Hometask2.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BSA2018_Hometask2.Controllers
 {
-    public class SelectionController : Controller
+    public class SelectionController : BaseController
     {
-        // GET: Selection
-        public ActionResult Index()
+
+        public SelectionController(SelectionService _service) : base(_service)
         {
-            return View();
+
         }
 
-        // GET: Selection/Details/5
-        public ActionResult Details(int id)
+        public ActionResult CommentsUnderUserPost(int id)
         {
-            return View();
+            return View(service.CommentsUnderUserPost(id));
         }
 
-        // GET: Selection/Create
-        public ActionResult Create()
+        public ActionResult CommentUnderUserPostBodyMoreThen50(int id)
         {
-            return View();
+            return View(service.CommentUnderUserPostBodyMoreThen50(id));
         }
 
-        // POST: Selection/Create
+        public ActionResult CompletedUsersTodos(int id)
+        {
+            return View(service.CompletedTodosByUser(id));
+        }
+
+        public ActionResult UsersACSWithTodosDSC()
+        {
+            return View(service.UsersACSWithTodosDSC());
+        }
+
+        public ActionResult UsersInfo(int id)
+        {
+            return View(service.UsersInfo(id));
+        }
+
+        public ActionResult PostInfo(int id)
+        {
+            return View(service.PostsInfo(id));
+        }
+
+        public ActionResult EnterId(string name)
+        {
+            ViewBag.Name = name;
+            return View();
+        }
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public void SetId(int id)
         {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Selection/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: Selection/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Selection/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Selection/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            PostInfo(id);       
         }
     }
 }
